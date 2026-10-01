@@ -1,0 +1,113 @@
+/* ============================================================
+   BookWorld — Dashboard Layout
+   ============================================================ */
+
+.bw-app { display: flex; min-height: 100vh; }
+
+/* ---------- Sidebar ---------- */
+.bw-sidebar {
+  width: 260px;
+  background: var(--bw-navy);
+  color: rgba(245,239,223,0.85);
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  transition: margin-left 0.25s ease;
+}
+.bw-sidebar .brand {
+  padding: 1.4rem 1.5rem;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  color: var(--bw-paper);
+  border-bottom: 1px solid rgba(245,239,223,0.1);
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.bw-sidebar .brand i { color: var(--bw-brass); }
+.bw-sidebar .role-tag {
+  margin: 1rem 1.5rem 0.5rem;
+  font-size: 0.72rem;
+  text-transform: none;
+  color: rgba(245,239,223,0.45);
+  letter-spacing: 0.3px;
+}
+.bw-sidebar .nav-link {
+  color: rgba(245,239,223,0.75);
+  padding: 0.7rem 1.5rem;
+  font-size: 0.94rem;
+  border-left: 3px solid transparent;
+  display: flex; align-items: center; gap: 0.7rem;
+}
+.bw-sidebar .nav-link i { width: 18px; text-align: center; opacity: 0.85; }
+.bw-sidebar .nav-link:hover { background: rgba(245,239,223,0.06); color: var(--bw-paper); }
+.bw-sidebar .nav-link.active {
+  background: rgba(201,162,75,0.12);
+  border-left-color: var(--bw-brass);
+  color: var(--bw-brass-light);
+  font-weight: 600;
+}
+.bw-sidebar .nav-divider { padding: 1rem 1.5rem 0.4rem; font-size: 0.72rem; color: rgba(245,239,223,0.4); }
+
+/* ---------- Main area ---------- */
+.bw-main { flex: 1; min-width: 0; background: var(--bw-paper-soft); }
+.bw-topbar {
+  background: #fff;
+  border-bottom: 1px solid var(--bw-line);
+  padding: 0.9rem 1.6rem;
+  display: flex; align-items: center; justify-content: space-between;
+  position: sticky; top: 0; z-index: 20;
+}
+.bw-topbar .page-title { font-family: var(--font-display); font-size: 1.3rem; color: var(--bw-navy); margin: 0; }
+.bw-topbar .icon-btn {
+  width: 40px; height: 40px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--bw-navy); position: relative; border: 1px solid var(--bw-line);
+}
+.bw-topbar .icon-btn:hover { background: var(--bw-paper); }
+.bw-topbar .notif-dot {
+  position: absolute; top: 4px; right: 6px;
+  width: 8px; height: 8px; border-radius: 50%; background: var(--bw-danger);
+}
+.bw-content { padding: 1.8rem; }
+
+/* ---------- Stat cards (flat, left-accent bar — not the generic uniform card kit) ---------- */
+.bw-stat-card {
+  background: #fff;
+  border: 1px solid var(--bw-line);
+  border-left: 4px solid var(--bw-navy);
+  border-radius: var(--radius-sm);
+  padding: 1.2rem 1.4rem;
+  height: 100%;
+}
+.bw-stat-card.accent-green { border-left-color: var(--bw-green); }
+.bw-stat-card.accent-brass { border-left-color: var(--bw-brass); }
+.bw-stat-card.accent-danger { border-left-color: var(--bw-danger); }
+.bw-stat-card .num { font-family: var(--font-display); font-size: 2rem; color: var(--bw-navy); font-weight: 700; line-height: 1; }
+.bw-stat-card .label { color: var(--bw-slate); font-size: 0.86rem; margin-top: 0.35rem; }
+.bw-stat-card .icon { float: right; font-size: 1.4rem; color: var(--bw-line); }
+
+/* ---------- Panels / tables ---------- */
+.bw-panel {
+  background: #fff;
+  border: 1px solid var(--bw-line);
+  border-radius: var(--radius-md);
+  padding: 1.4rem;
+}
+.bw-panel .panel-title { font-family: var(--font-display); font-size: 1.1rem; color: var(--bw-navy); margin-bottom: 1rem; }
+.table-bw thead th {
+  background: var(--bw-paper);
+  color: var(--bw-navy);
+  font-weight: 600;
+  font-size: 0.85rem;
+  border-bottom: 2px solid var(--bw-line);
+}
+.table-bw td { vertical-align: middle; font-size: 0.92rem; }
+.table-bw tbody tr:hover { background: rgba(201,162,75,0.05); }
+
+/* ---------- Mobile sidebar toggle ---------- */
+@media (max-width: 991px) {
+  .bw-sidebar { position: fixed; z-index: 1030; margin-left: -260px; }
+  .bw-sidebar.show { margin-left: 0; }
+  .bw-main { width: 100%; }
+}
